@@ -60,11 +60,23 @@ This is a simple redis cache that supports key expiration, auto reconnection to 
 - #### Setting a value in the cache
 
   ```
-    cache.set('test-key', '10');
+  cache.set('key', '10')
+    .then(value => {
+      ...
+    })
+    .catch((e) => {
+      ...
+    });
   ```
 
 - #### Getting a value from the cache
 
   ```
-    const value = await redisCache.get('test-key'); //10
+  const value = cache.get('key')
+    .then(value => {
+      ...
+    })
+    .catch((e) => {
+      ...
+    });
   ```

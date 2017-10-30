@@ -43,7 +43,7 @@ It supports key expiration, auto reconnection to the redis server and various op
 
 - `.set(key, value, expires)` Set a value in the cache with an optional expires timeout in ms. Returns a promise that either resolves to "OK" or throws an error.
 
-- `.get(key)` Get a value from the cache. Returns a promise that either resolves to the value or throws an error.
+- `.get(key)` Get a value from the cache. Returns a promise that either resolves to the value (or null if it doesn't exist) or throws an error.
 
 - `.connected` Returns true if connected to the redis server, false otherwise.
 
@@ -59,10 +59,10 @@ It supports key expiration, auto reconnection to the redis server and various op
     });
   ```
 
-- #### Setting a value in the cache
+- #### Setting a value in the cache for 30 min
 
   ```
-  cache.set('key', '10')
+  cache.set('key', 'a string value', 1000 * 60 * 30)
     .catch((e) => {
       ...
     });

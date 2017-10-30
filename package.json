@@ -18,8 +18,7 @@
   "author": "Victor Zidaroiu",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "helpers": "git+https://github.com/victorzidaroiu/helpers.git",
+    "bluebird": "^3.5.0",    
     "redis": "^2.7.1",
     "winston": "^2.3.1"
   },

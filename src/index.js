@@ -1,6 +1,5 @@
 import redis from 'redis';
 import bluebird from 'bluebird';
-import { hash } from 'helpers';
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 
@@ -33,15 +32,17 @@ export default class {
 
   get(key) {
     if (this.client.connected) {
-      return this.client.getAsync(this.prefix + hash(key));
+      return this.client.getAsync(`${this.prefix}${key}`);
     }
 
     return Promise.reject('redisNodeCache: Not connected to the redis server.');
   }
 
-  set(key, value, expires = 0) {
+  set(key, value, expires) {
     if (this.client.connected) {
-      return this.client.setAsync([this.prefix + hash(key), value, 'PX', expires]);
+      return this.client.setAsync(
+        [`${this.prefix}${key}`, value].concat(expires ? ['PX', expires] : []),
+      );
     }
 
     return Promise.reject('redisNodeCache: Not connected to the redis server.');

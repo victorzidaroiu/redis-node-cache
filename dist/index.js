@@ -14,8 +14,6 @@ var _bluebird = require('bluebird');
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
-var _helpers = require('helpers');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,18 +53,16 @@ var _class = function () {
     key: 'get',
     value: function get(key) {
       if (this.client.connected) {
-        return this.client.getAsync(this.prefix + (0, _helpers.hash)(key));
+        return this.client.getAsync('' + this.prefix + key);
       }
 
       return Promise.reject('redisNodeCache: Not connected to the redis server.');
     }
   }, {
     key: 'set',
-    value: function set(key, value) {
-      var expires = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-
+    value: function set(key, value, expires) {
       if (this.client.connected) {
-        return this.client.setAsync([this.prefix + (0, _helpers.hash)(key), value, 'PX', expires]);
+        return this.client.setAsync(['' + this.prefix + key, value].concat(expires ? ['PX', expires] : []));
       }
 
       return Promise.reject('redisNodeCache: Not connected to the redis server.');

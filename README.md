@@ -61,7 +61,7 @@ This is a simple redis cache that supports key expiration, auto reconnection to 
 
   ```
   cache.set('key', '10')
-    .then(value => {
+    .then(response => {
       ...
     })
     .catch((e) => {

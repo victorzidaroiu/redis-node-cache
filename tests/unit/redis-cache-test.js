@@ -12,7 +12,7 @@ describe('Redis Cache', () => {
         createClient: () => ({
           connected,
           getAsync: () => Promise.resolve(mockReturnedValue),
-          setAsync: () => Promise.resolve(mockReturnedValue),
+          setAsync: () => Promise.resolve('OK'),
         }),
         RedisClient: {
           prototype: {},
@@ -36,8 +36,8 @@ describe('Redis Cache', () => {
     });
 
     it('sets a value', async () => {
-      const returnedValue = await redisCache.set('test-key', mockReturnedValue);
-      expect(returnedValue).to.eq(mockReturnedValue);
+      const response = await redisCache.set('test-key', mockReturnedValue);
+      expect(response).to.eq('OK');
     });
 
     it('gets a value', async () => {

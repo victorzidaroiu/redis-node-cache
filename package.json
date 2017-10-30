@@ -1,14 +1,14 @@
 {
   "name": "redis-node-cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple redis cache for node apps.",
   "main": "./dist",
   "directories": {
     "test": "test"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/victorzidaroiu/redis-node-cache"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/victorzidaroiu/redis-node-cache"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register ./tests/*",

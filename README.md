@@ -45,6 +45,8 @@ It supports key expiration, auto reconnection to the redis server and various op
 
 - `.get(key)` Get a value from the cache. Returns a promise that either resolves to the value or throws an error.
 
+- `.connected` Returns true if connected to the redis server, false otherwise.
+
 ## Examples
 
 - #### Connecting to the redis server

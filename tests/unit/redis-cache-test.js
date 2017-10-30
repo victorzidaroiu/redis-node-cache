@@ -20,7 +20,7 @@ describe('Redis Cache', () => {
       } });
 
     redisCache = new RedisNodeCache({
-      redisURL: 'redis://localhost:6379',
+      redisUrl: 'redis://localhost:6379',
     });
   });
 

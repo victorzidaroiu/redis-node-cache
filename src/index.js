@@ -10,14 +10,14 @@ export default class {
     this.prefix = config.prefix || 'jscache_';
     this.timeout = config.timeout || 100;
     this.logger = config.logger || (() => {});
-    this.redisURL = config.redisURL;
+    this.redisUrl = config.redisUrl;
 
-    if (!this.redisURL) {
-      throw new Error('The redisURL option is not set.');
+    if (!this.redisUrl) {
+      throw new Error('The redisUrl option is not set.');
     }
 
     this.client = redis.createClient({
-      url: this.redisURL,
+      url: this.redisUrl,
       retry_strategy: (options) => {
         if (options.error && options.error.code === 'ECONNREFUSED') {
           this.logger(`redisNodeCache: Could not connect, retrying in ${this.retryInterval} ms...`);

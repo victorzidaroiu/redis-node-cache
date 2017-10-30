@@ -34,14 +34,14 @@ var _class = function () {
     this.prefix = config.prefix || 'jscache_';
     this.timeout = config.timeout || 100;
     this.logger = config.logger || function () {};
-    this.redisURL = config.redisURL;
+    this.redisUrl = config.redisUrl;
 
-    if (!this.redisURL) {
-      throw new Error('The redisURL option is not set.');
+    if (!this.redisUrl) {
+      throw new Error('The redisUrl option is not set.');
     }
 
     this.client = _redis2.default.createClient({
-      url: this.redisURL,
+      url: this.redisUrl,
       retry_strategy: function retry_strategy(options) {
         if (options.error && options.error.code === 'ECONNREFUSED') {
           _this.logger('redisNodeCache: Could not connect, retrying in ' + _this.retryInterval + ' ms...');

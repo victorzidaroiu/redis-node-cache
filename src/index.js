@@ -8,7 +8,6 @@ export default class {
   constructor(config = {}) {
     this.retryInterval = config.retryInterval || 500;
     this.prefix = config.prefix || 'jscache_';
-    this.timeout = config.timeout || 100;
     this.logger = config.logger || (() => {});
     this.redisUrl = config.redisUrl;
 
@@ -40,9 +39,9 @@ export default class {
     return Promise.reject('redisNodeCache: Not connected to the redis server.');
   }
 
-  set(key, response) {
+  set(key, value, expires = 0) {
     if (this.client.connected) {
-      return this.client.setAsync([this.prefix + hash(key), response, 'PX', this.timeout]);
+      return this.client.setAsync([this.prefix + hash(key), value, 'PX', expires]);
     }
 
     return Promise.reject('redisNodeCache: Not connected to the redis server.');

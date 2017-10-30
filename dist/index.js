@@ -32,7 +32,6 @@ var _class = function () {
 
     this.retryInterval = config.retryInterval || 500;
     this.prefix = config.prefix || 'jscache_';
-    this.timeout = config.timeout || 100;
     this.logger = config.logger || function () {};
     this.redisUrl = config.redisUrl;
 
@@ -63,9 +62,11 @@ var _class = function () {
     }
   }, {
     key: 'set',
-    value: function set(key, response) {
+    value: function set(key, value) {
+      var expires = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
       if (this.client.connected) {
-        return this.client.setAsync([this.prefix + (0, _helpers.hash)(key), response, 'PX', this.timeout]);
+        return this.client.setAsync([this.prefix + (0, _helpers.hash)(key), value, 'PX', expires]);
       }
 
       return Promise.reject('redisNodeCache: Not connected to the redis server.');

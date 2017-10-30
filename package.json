@@ -1,6 +1,6 @@
 {
   "name": "redis-node-cache",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A simple redis cache for node apps.",
   "main": "./dist",
   "directories": {
@@ -18,7 +18,7 @@
   "author": "Victor Zidaroiu",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.0",    
+    "bluebird": "^3.5.0",
     "redis": "^2.7.1",
     "winston": "^2.3.1"
   },

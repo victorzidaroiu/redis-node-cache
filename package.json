@@ -6,6 +6,10 @@
   "directories": {
     "test": "test"
   },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/victorzidaroiu/redis-node-cache"
+  },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register ./tests/*",
     "build": "babel ./src -d ./dist",

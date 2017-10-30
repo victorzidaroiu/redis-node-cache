@@ -1,6 +1,6 @@
 {
   "name": "redis-node-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple redis cache for node apps.",
   "main": "./dist",
   "directories": {

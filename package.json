@@ -1,13 +1,15 @@
 {
-  "name": "js-redis-cache",
+  "name": "redis-node-cache",
   "version": "1.0.0",
   "description": "A simple redis cache for node apps.",
-  "main": "index.js",
+  "main": "./dist",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./tests/*"
+    "test": "mocha --compilers js:babel-core/register ./tests/*",
+    "build": "babel ./src -d ./dist",
+    "preversion": "npm run build"
   },
   "author": "Victor Zidaroiu",
   "license": "ISC",

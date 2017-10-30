@@ -19,8 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "redis": "^2.7.1",
-    "winston": "^2.3.1"
+    "redis": "^2.7.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
